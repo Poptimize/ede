@@ -1,0 +1,3465 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "LCD",
+	"description": "Esquema del lilbro de clases electrónico",
+	"type": "object",
+	"properties": {
+		"_Personas": {
+			"type": "object",
+			"properties": {
+				"Person": {
+					"type": "object",
+					"properties": {
+						"PersonId": {
+							"type": "integer"
+						},
+						"FirstName": {
+							"type": "string",
+							"maxLength": 35
+						},
+						"MiddleName": {
+							"type": "string",
+							"maxLength": 35
+						},
+						"LastName": {
+							"type": "string",
+							"maxLength": 35
+						},
+						"SecondLastName": {
+							"type": "string",
+							"maxLength": 35
+						},
+						"GenerationCode": {
+							"type": "string",
+							"maxLength": 10
+						},
+						"Prefix": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"Birthdate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefSexId": {
+							"$ref": "#/definitions/Refsex"
+						},
+						"HispanicLatinoEthnicity": {
+							"type": "boolean"
+						},
+						"RefUSCitizenshipStatusId": {
+							"type": "object"
+						},
+						"RefVisaTypeId": {
+							"type": "object"
+						},
+						"RefStateOfResidenceId": {
+							"type": "object"
+						},
+						"RefProofOfResidencyTypeId": {
+							"type": "object"
+						},
+						"RefHighestEducationLevelCompletedId": {
+							"type": "object"
+						},
+						"RefPersonalInformationVerificationId": {
+							"type": "object"
+						},
+						"BirthdateVerification": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"RefTribalAffiliationId": {
+							"$ref": "#/definitions/RefTribalAffiliation"
+						}
+					},
+					"required": [
+						"PersonId",
+						"FirstName",
+						"MiddleName",
+						"LastName",
+						"SecondLastName"
+					]
+				},
+				"PersonIdentifier": {
+					"type": "object",
+					"properties": {
+						"PersonIdentifierId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"Identifier": {
+							"type": "string",
+							"maxLength": 40
+						},
+						"RefPersonIdentificationSystemId": {
+							"$ref": "#/definitions/RefPersonIdentificationSystem"
+						},
+						"RefPersonalInformationVerificationId": {
+							"$ref": "#/definitions/RefPersonalInformationVerification"
+						}
+					},
+					"required": [
+						"Identifier",
+						"RefPersonIdentificationSystemId"
+					]
+				},
+				"PersonBirthplace": {
+					"type": "object",
+					"properties": {
+						"PersonId": {
+							"type": "integer"
+						},
+						"City": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"RefStateId": {
+							"$ref": "#/definitions/RefState"
+						},
+						"RefCountryId": {
+							"$ref": "#/definitions/RefCountry"
+						}
+					}
+				},
+				"PersonAddress": {
+					"type": "object",
+					"properties": {
+						"PersonAddressId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"RefPersonLocationTypeId": {
+							"type": "object"
+						},
+						"StreetNumberAndName": {
+							"type": "string",
+							"maxLength": 40
+						},
+						"ApartmentRoomOrSuiteNumber": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"City": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"RefStateId": {
+							"$ref": "#/definitions/RefState"
+						},
+						"PostalCode": {
+							"type": "string",
+							"maxLength": 17
+						},
+						"AddressCountyName": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"RefCountyId": {
+							"$ref": "#/definitions/RefCounty"
+						},
+						"RefCountryId": {
+							"$ref": "#/definitions/RefCountry"
+						},
+						"Latitude": {
+							"type": "string",
+							"maxLength": 20
+						},
+						"Longitude": {
+							"type": "string",
+							"maxLength": 20
+						},
+						"RefPersonalInformationVerificationId": {
+							"type": "object"
+						}
+					}
+				},
+				"PersonEmailAddress": {
+					"type": "object",
+					"properties": {
+						"PersonEmailAddressId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"EmailAddress": {
+							"maxLength": 128
+						},
+						"RefEmailTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"PersonTelephone": {
+					"type": "object",
+					"properties": {
+						"PersonTelephoneId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"TelephoneNumber": {
+							"type": "string",
+							"maxLength": 24
+						},
+						"PrimaryTelephoneNumberIndicator": {
+							"type": "boolean"
+						},
+						"RefPersonTelephoneNumberTypeId": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"PersonTelephoneId"
+					]
+				},
+				"PersonStatus": {
+					"type": "object",
+					"properties": {
+						"PersonStatusId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"RefPersonStatusTypeId": {
+							"type": "object"
+						},
+						"StatusValue": {
+							"type": "boolean"
+						},
+						"StatusStartDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"StatusEndDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						}
+					}
+				},
+				"PersonLanguage": {
+					"type": "object",
+					"properties": {
+						"PersonLanguageId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"RefLanguageId": {
+							"type": "object"
+						},
+						"RefLanguageUseTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"PersonDisability": {
+					"type": "object",
+					"properties": {
+						"PersonId": {
+							"type": "integer"
+						},
+						"PrimaryDisabilityTypeId": {
+							"type": "object"
+						},
+						"DisabilityStatus": {
+							"type": "boolean"
+						},
+						"RefAccommodationsNeededTypeId": {
+							"type": "object"
+						},
+						"RefDisabilityConditionTypeId": {
+							"type": "object"
+						},
+						"RefDisabilityDeterminationSourceTypeId": {
+							"type": "object"
+						},
+						"RefDisabilityConditionStatusCodeId": {
+							"$ref": "#/definitions/RefDisabilityConditionStatusCode"
+						},
+						"RefIDEADisabilityTypeId": {
+							"$ref": "#/definitions/RefIDEADisabilityType"
+						},
+						"SignificantCognitiveDisabilityIndicator": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"PersonId"
+					]
+				},
+				"PersonRelationship": {
+					"type": "object",
+					"properties": {
+						"PersonRelationshipId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"RelatedPersonId": {
+							"type": "integer"
+						},
+						"RefPersonRelationshipId": {
+							"$ref": "#/definitions/RefPersonRelationship"
+						},
+						"CustodialRelationshipIndicator": {
+							"type": "boolean"
+						},
+						"EmergencyContactInd": {
+							"type": "boolean"
+						},
+						"ContactPriorityNumber": {
+							"type": "integer"
+						},
+						"ContactRestrictions": {
+							"type": "string",
+							"maxLength": 2000
+						},
+						"LivesWithIndicator": {
+							"type": "boolean"
+						},
+						"PrimaryContactIndicator": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"PersonRelationshipId"
+					]
+				},
+				"PersonDegreeOrCertificate": {
+					"type": "object",
+					"properties": {
+						"PersonDegreeOrCertificateId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"DegreeOrCertificateTitleOrSubject": {
+							"type": "string",
+							"maxLength": 45
+						},
+						"RefDegreeOrCertificateTypeId": {
+							"type": "integer"
+						},
+						"AwardDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"NameOfInstitution": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"RefHigherEducationInstitutionAccreditati\r\nonStatusId": {
+							"$ref": "#/definitions/RefHigherEducationInstitutionAccreditationStatus"
+						},
+						"RefEducationVerificationMethodId": {
+							"$ref": "#/definitions/RefEducationVerificationMethod"
+						}
+					},
+					"required": [
+						"PersonDegreeOrCertificateId"
+					]
+				}
+			}
+		},
+		"_Organizaciones": {
+			"type": "object",
+			"properties": {
+				"Organization": {
+					"type": "object",
+					"properties": {
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"Name": {
+							"type": "string",
+							"maxLength": 128
+						},
+						"RefOrganizationTypeId": {
+							"type": "object"
+						},
+						"ShortName": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"RegionGeoJSON": {
+							"type": "string",
+							"maxLength": 2000
+						}
+					}
+				},
+				"OrganizationLocation": {
+					"type": "object",
+					"properties": {
+						"OrganizationLocationId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"LocationId": {
+							"type": "integer"
+						},
+						"RefOrganizationLocationTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"OrganizationTelephone": {
+					"type": "object",
+					"properties": {
+						"OrganizationTelephoneId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"TelephoneNumber": {
+							"type": "string",
+							"maxLength": 24
+						},
+						"PrimaryTelephoneNumberIndicator": {
+							"type": "object"
+						},
+						"RefInstitutionTelephoneTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"OrganizationEmail": {
+					"type": "object",
+					"properties": {
+						"OrganizationEmailId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"ElectronicMailAddress": {
+							"type": "string",
+							"maxLength": 128
+						},
+						"RefEmailTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"RefOrganizationRelationship": {
+					"type": "object",
+					"properties": {
+						"RefOrganizationRelationshipId": {
+							"type": "object"
+						},
+						"Description": {
+							"type": "string",
+							"maxLength": 100
+						},
+						"Code": {
+							"type": "string",
+							"maxLength": 50
+						},
+						"Definition": {
+							"type": "string",
+							"maxLength": 4000
+						},
+						"RefJurisdictionId": {
+							"type": "object"
+						},
+						"SortOrder": {
+							"type": "number"
+						}
+					}
+				},
+				"OrganizationIdentifier": {
+					"type": "object",
+					"properties": {
+						"OrganizationIdentifierId": {
+							"type": "integer"
+						},
+						"Identifier": {
+							"type": "string",
+							"maxLength": 40
+						},
+						"RefOrganizationIdentificationSystemId\r\n": {
+							"type": "object"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefOrganizationIdentifierTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"OrganizationWebsite": {
+					"type": "object",
+					"properties": {
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"Website": {
+							"type": "string",
+							"maxLength": 300
+						}
+					}
+				},
+				"OrganizationOperationalStatus": {
+					"type": "object",
+					"properties": {
+						"OrganizationOperationalStatusId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefOperationalStatusId": {
+							"type": "object"
+						},
+						"OperationalStatusEffectiveDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						}
+					}
+				},
+				"OrganizationIndicator": {
+					"type": "object",
+					"properties": {
+						"OrganizationIndicatorId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"IndicatorValue": {
+							"type": "string",
+							"maxLength": 50
+						},
+						"RefOrganizationIndicatorId": {
+							"type": "object"
+						}
+					}
+				},
+				"OrganizationRelationship": {
+					"type": "object",
+					"properties": {
+						"OrganizationRelationshipId": {
+							"type": "integer"
+						},
+						"Parent_OrganizationId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "number"
+						},
+						"RefOrganizationRelationshipId": {
+							"type": "object"
+						}
+					}
+				}
+			}
+		},
+		"_Establecimientos": {
+			"type": "object",
+			"properties": {
+				"K12SchoolCorrectiveAction": {
+					"type": "object",
+					"properties": {
+						"K12SchoolCorrectiveActionId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefCorrectiveActionTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12School": {
+					"type": "object",
+					"properties": {
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefSchoolTypeId": {
+							"type": "object"
+						},
+						"RefSchoolLevelId": {
+							"type": "object"
+						},
+						"RefAdministrativeFundingControlId": {
+							"type": "object"
+						},
+						"CharterSchoolIndicator": {
+							"type": "boolean"
+						},
+						"RefCharterSchoolTypeId": {
+							"type": "object"
+						},
+						"RefIncreasedLearningTimeTypeId": {
+							"type": "object"
+						},
+						"RefStatePovertyDesignationId": {
+							"type": "object"
+						},
+						"CharterSchoolApprovalYear": {
+							"type": "string",
+							"maxLength": 9
+						},
+						"RefCharterSchoolApprovalAgencyTypeId": {
+							"type": "object"
+						},
+						"AccreditationAgencyName": {
+							"type": "string",
+							"maxLength": 300
+						},
+						"CharterSchoolOpenEnrollmentIndicator": {
+							"type": "boolean"
+						},
+						"CharterSchoolContractApprovalDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"CharterSchoolContractIdNumber": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"CharterSchoolContractRenewalDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefCharterSchoolManagementOrganizationTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12SchoolGradeOffered": {
+					"type": "object",
+					"properties": {
+						"K12SchoolGradeOfferedId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefGradeLevelId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12SchoolStatus": {
+					"type": "object",
+					"properties": {
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefMagnetSpecialProgramId": {
+							"type": "object"
+						},
+						"RefAlternativeSchoolFocusId": {
+							"type": "object"
+						},
+						"RefInternetAccessId": {
+							"type": "object"
+						},
+						"RefRestructuringActionId": {
+							"type": "object"
+						},
+						"RefTitleISchoolStatusId": {
+							"type": "object"
+						},
+						"ConsolidatedMepFundsStatus": {
+							"type": "boolean"
+						},
+						"RefNationalSchoolLunchProgramStatusId": {
+							"type": "object"
+						},
+						"RefVirtualSchoolStatusId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12SchoolImprovement": {
+					"type": "object",
+					"properties": {
+						"K12SchoolImprovementId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefSchoolImprovementStatusId": {
+							"type": "object"
+						},
+						"RefSchoolImprovementFundsId": {
+							"type": "object"
+						},
+						"RefSigInterventionTypeId": {
+							"type": "object"
+						},
+						"SchoolImprovementExitDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						}
+					}
+				}
+			}
+		},
+		"_Calendarios": {
+			"type": "object",
+			"properties": {
+				"OrganizationCalendar": {
+					"type": "object",
+					"properties": {
+						"OrganizationCalendarId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"CalendarCode": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"CalendarDescription": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"CalendarYear": {
+							"type": "string",
+							"maxLength": 4
+						}
+					}
+				},
+				"OrganizationCalendarDay": {
+					"type": "object",
+					"properties": {
+						"OrganizationCalendarDayId": {
+							"type": "integer"
+						},
+						"OrganizationCalendarId": {
+							"type": "integer"
+						},
+						"DayName": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"AlternateDayName": {
+							"type": "string",
+							"maxLength": 30
+						}
+					}
+				},
+				"OrganizationCalendarCrisis": {
+					"type": "object",
+					"properties": {
+						"OrganizationCalendarCrisisId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"Code": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"Name": {
+							"type": "string",
+							"maxLength": 50
+						},
+						"StartDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"EndDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"Type": {
+							"type": "string",
+							"maxLength": 50
+						},
+						"CrisisDescription": {
+							"type": "string",
+							"maxLength": 300
+						},
+						"CrisisEndDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						}
+					}
+				},
+				"OrganizationCalendarSession": {
+					"type": "object",
+					"properties": {
+						"OrganizationCalendarSessionId": {
+							"type": "integer"
+						},
+						"Designator": {
+							"type": "string",
+							"maxLength": 7
+						},
+						"BeginDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"EndDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefSessionTypeId": {
+							"type": "object"
+						},
+						"InstructionalMinutes": {
+							"type": "number"
+						},
+						"Code": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"Description": {
+							"type": "string"
+						},
+						"MarkingTermIndicator": {
+							"type": "boolean"
+						},
+						"SchedulingTermIndicator": {
+							"type": "boolean"
+						},
+						"AttendanceTermIndicator": {
+							"type": "boolean"
+						},
+						"OrganizationCalendarId": {
+							"type": "integer"
+						},
+						"DaysInSession": {
+							"type": "object"
+						},
+						"FirstInstructionDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"LastInstructionDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"MinutesPerDay": {
+							"type": "number"
+						},
+						"SessionStartTime": {
+							"type": "string",
+							"maxLength": 7
+						},
+						"SessionEndTime": {
+							"type": "string",
+							"maxLength": 7
+						}
+					}
+				},
+				"OrganizationCalendarEvent": {
+					"type": "object",
+					"properties": {
+						"OrganizationCalendarEventId": {
+							"type": "integer"
+						},
+						"OrganizationCalendarId": {
+							"type": "integer"
+						},
+						"Name": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"EventDate": {
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefCalendarEventType": {
+							"type": "object"
+						}
+					}
+				}
+			}
+		},
+		"_Cursos": {
+			"type": "object",
+			"properties": {
+				"Location": {
+					"type": "object",
+					"properties": {
+						"LocationId": {
+							"type": "integer"
+						}
+					},
+					"required": [
+						"LocationId"
+					]
+				},
+				"LocationAddress": {
+					"type": "object",
+					"properties": {
+						"LocationId": {
+							"type": "integer"
+						},
+						"StreetNumberAndName": {
+							"type": "string",
+							"maxLength": 40
+						},
+						"ApartmentRoomOrSuiteNumber": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"BuildingSiteNumber": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"City": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"RefStateId": {
+							"$ref": "#/definitions/RefState"
+						},
+						"PostalCode": {
+							"type": "string",
+							"maxLength": 17
+						},
+						"CountyName": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"RefCountyId": {
+							"$ref": "#/definitions/RefCounty"
+						},
+						"RefCountryId": {
+							"$ref": "#/definitions/RefCountry"
+						},
+						"Latitude": {
+							"type": "string",
+							"maxLength": 20
+						},
+						"Longitude": {
+							"type": "string",
+							"maxLength": 20
+						},
+						"RefERSRuralUrbanContinuumCodeId": {
+							"type": "object"
+						},
+						"FacilityBlockNumberArea": {
+							"type": "string",
+							"maxLength": 100
+						},
+						"FacilityCensusTract": {
+							"type": "string",
+							"maxLength": 100
+						}
+					},
+					"required": [
+						"LocationId"
+					]
+				},
+				"FacilityLocation": {
+					"type": "object",
+					"properties": {
+						"FacilityLocationId": {
+							"type": "integer"
+						},
+						"FacilityId": {
+							"type": "integer"
+						},
+						"LocationId": {
+							"type": "integer"
+						}
+					},
+					"required": [
+						"FacilityLocationId"
+					]
+				},
+				"Classroom": {
+					"type": "object",
+					"properties": {
+						"LocationId": {
+							"type": "integer"
+						},
+						"ClassroomIdentifier": {
+							"type": "string",
+							"maxLength": 40
+						}
+					}
+				},
+				"K12Course": {
+					"type": "object",
+					"properties": {
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"HighSchoolCourseRequirement": {
+							"type": "boolean"
+						},
+						"RefAdditionalCreditTypeId": {
+							"type": "object"
+						},
+						"AvailableCarnegieUnitCredit": {
+							"type": "number"
+						},
+						"RefCourseGpaApplicabilityId": {
+							"type": "object"
+						},
+						"CoreAcademicCourse": {
+							"type": "boolean"
+						},
+						"RefCurriculumFrameworkTypeId": {
+							"type": "object"
+						},
+						"CourseAlignedWithStandards": {
+							"type": "boolean"
+						},
+						"RefCreditTypeEarnedId": {
+							"type": "object"
+						},
+						"FundingProgram": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"FamilyConsumerSciencesCourseInd": {
+							"type": "boolean"
+						},
+						"SCEDCourseCode": {
+							"type": "string",
+							"maxLength": 5
+						},
+						"SCEDGradeSpan": {
+							"type": "string",
+							"maxLength": 4
+						},
+						"RefSCEDCourseLevelId": {
+							"type": "object"
+						},
+						"RefSCEDCourseSubjectAreaId": {
+							"type": "object"
+						},
+						"RefCareerClusterId": {
+							"type": "object"
+						},
+						"RefBlendedLearningModelTypeId": {
+							"type": "object"
+						},
+						"RefCourseInteractionModeId": {
+							"type": "object"
+						},
+						"RefK12EndOfCourseRequirementId": {
+							"type": "object"
+						},
+						"RefWorkbasedLearningOpportunityTypeId": {
+							"type": "object"
+						},
+						"CourseDepartmentName": {
+							"type": "string",
+							"maxLength": 60
+						}
+					}
+				},
+				"CourseSectionLocation": {
+					"type": "object",
+					"properties": {
+						"CourseSectionLocationId": {
+							"type": "integer"
+						},
+						"LocationId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"RefInstructionLocationTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"Course": {
+					"type": "object",
+					"properties": {
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"Description": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"SubjectAbbreviation": {
+							"type": "string",
+							"maxLength": 50
+						},
+						"SCEDSequenceOfCourse": {
+							"type": "string",
+							"maxLength": 50
+						},
+						"InstructionalMinutes": {
+							"type": "object"
+						},
+						"RefCourseLevelCharacteristicsId": {
+							"type": "object"
+						},
+						"RefCourseCreditUnitId": {
+							"type": "object"
+						},
+						"CreditValue": {
+							"type": "number"
+						},
+						"RefInstructionLanguage": {
+							"type": "object"
+						},
+						"CertificationDescription": {
+							"type": "string",
+							"maxLength": 300
+						},
+						"RefCourseApplicableEducationLevelId": {
+							"type": "object"
+						},
+						"RepeatabilityMaximumNumber": {
+							"type": "object"
+						}
+					}
+				},
+				"CourseSection": {
+					"type": "object",
+					"properties": {
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"AvailableCarnegieUnitCredit": {
+							"type": "number"
+						},
+						"RefCourseSectionDeliveryModeId": {
+							"type": "object"
+						},
+						"RefSingleSexClassStatusId": {
+							"type": "object"
+						},
+						"TimeRequiredForCompletion": {
+							"type": "number"
+						},
+						"CourseId": {
+							"type": "integer"
+						},
+						"RefAdditionalCreditTypeId": {
+							"type": "object"
+						},
+						"RefInstructionLanguageId": {
+							"type": "object"
+						},
+						"VirtualIndicator": {
+							"type": "boolean"
+						},
+						"OrganizationCalendarSessionId": {
+							"type": "integer"
+						},
+						"RefCreditTypeEarnedId": {
+							"type": "object"
+						},
+						"RefAdvancedPlacementCourseCodeId": {
+							"type": "object"
+						},
+						"MaximumCapacity": {
+							"type": "object"
+						},
+						"RelatedCompetencyFrameworkItems": {
+							"type": "string",
+							"maxLength": 60
+						}
+					}
+				},
+				"CourseSectionSchedule": {
+					"type": "object",
+					"properties": {
+						"CourseSectionScheduleId": {
+							"type": "object"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"ClassMeetingDays": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"ClassBeginningTime": {
+							"type": "string",
+							"maxLength": 7
+						},
+						"ClassEndingTime": {
+							"type": "string",
+							"maxLength": 7
+						},
+						"ClassPeriod": {
+							"type": "string",
+							"maxLength": 30
+						},
+						"TimeDayIdentifier": {
+							"type": "string",
+							"maxLength": 40
+						}
+					}
+				}
+			}
+		},
+		"_Incidentes": {
+			"type": "object",
+			"properties": {
+				"Incident": {
+					"type": "object",
+					"properties": {
+						"IncidentId": {
+							"type": "integer"
+						},
+						"IncidentIdentifier": {
+							"type": "string",
+							"maxLength": 40
+						},
+						"IncidentDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"IncidentTime": {
+							"type": "string",
+							"maxLength": 7
+						},
+						"RefIncidentTimeDescriptionCodeId": {
+							"type": "object"
+						},
+						"IncidentDescription": {
+							"type": "string"
+						},
+						"RefIncidentBehaviorId": {
+							"type": "object"
+						},
+						"RefIncidentBehaviorSecondaryId": {
+							"type": "object"
+						},
+						"RefIncidentInjuryTypeId": {
+							"type": "object"
+						},
+						"RefWeaponTypeId": {
+							"type": "object"
+						},
+						"IncidentCost": {
+							"type": "object"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"IncidentReporterId": {
+							"type": "string",
+							"maxLength": 30
+						},
+						" RefIncidentReporterTypeId": {
+							"type": "object"
+						},
+						"RefIncidentLocationId": {
+							"type": "object"
+						},
+						"RefFirearmTypeId": {
+							"type": "object"
+						},
+						"RegulationViolatedDescription": {
+							"type": "string",
+							"maxLength": 100
+						},
+						"RelatedToDisabilityManifestationInd": {
+							"type": "boolean"
+						},
+						"ReportedToLawEnforcementInd": {
+							"type": "boolean"
+						},
+						"RefIncidentMultipleOffenseTypeId": {
+							"type": "object"
+						},
+						"RefIncidentPerpetratorInjuryTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12StudentDiscipline": {
+					"type": "object",
+					"properties": {
+						"K12StudentDisciplineId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefDisciplineReasonId": {
+							"type": "object"
+						},
+						"RefDisciplinaryActionTakenId": {
+							"type": "object"
+						},
+						"DisciplinaryActionStartDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"DisciplinaryActionEndDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"DurationOfDisciplinaryAction": {
+							"type": "number"
+						},
+						"RefDisciplineLengthDifferenceReasonId": {
+							"type": "object"
+						},
+						"FullYearExpulsion": {
+							"type": "boolean"
+						},
+						"ShortenedExpulsion": {
+							"type": "boolean"
+						},
+						"EducationalServicesAfterRemoval": {
+							"type": "boolean"
+						},
+						"RefIdeaInterimRemovalId": {
+							"type": "object"
+						},
+						"RefIdeaInterimRemovalReasonId": {
+							"type": "object"
+						},
+						"RelatedToZeroTolerancePolicy": {
+							"type": "boolean"
+						},
+						"IncidentId": {
+							"type": "integer"
+						},
+						"IEPPlacementMeetingIndicator": {
+							"type": "boolean"
+						},
+						"RefDisciplineMethodFirearmsId": {
+							"type": "object"
+						},
+						"RefDisciplineMethodOfCwdId": {
+							"type": "object"
+						},
+						"RefIDEADisciplineMethodFirearmId": {
+							"type": "object"
+						}
+					}
+				},
+				"IncidentPerson": {
+					"type": "object",
+					"properties": {
+						"IncidentId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"Identifier": {
+							"type": "string",
+							"maxLength": 40
+						},
+						"RefIncidentPersonRoleTypeId": {
+							"type": "object"
+						},
+						"RefIncidentPersonTypeId": {
+							"type": "object"
+						}
+					}
+				}
+			}
+		},
+		"_Intervenciones": {
+			"type": "object",
+			"properties": {
+				"ProgramParticipationSpecialEducation": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "boolean"
+						},
+						"AwaitingInitialIDEAEvaluationStatus": {
+							"type": "boolean"
+						},
+						"RefIDEAEducationalEnvironmentECId": {
+							"type": "object"
+						},
+						"RefIDEAEdEnvironmentSchoolAgeId": {
+							"type": "object"
+						},
+						"SpecialEducationFTE": {
+							"type": "number"
+						},
+						"RefSpecialEducationExitReasonId": {
+							"type": "object"
+						},
+						"SpecialEducationServicesExitDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"IDEAPlacementRationale": {
+							"type": "string"
+						}
+					}
+				},
+				"PersonProgramParticipation": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefParticipationTypeId": {
+							"type": "object"
+						},
+						"RefProgramExitReasonId": {
+							"type": "object"
+						},
+						"ParticipationStatus": {
+							"type": "string",
+							"maxLength": 100
+						}
+					}
+				},
+				"IndividualizedProgram": {
+					"type": "object",
+					"properties": {
+						"IndividualizedProgramId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefIndividualizedProgramDateType": {
+							"type": "object"
+						},
+						"IndividualizedProgramDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"NonInclusionMinutesPerWeek": {
+							"type": "object"
+						},
+						"InclusionMinutesPerWeek": {
+							"type": "object"
+						},
+						"RefIndividualizedProgramTransitionTypeId": {
+							"type": "object"
+						},
+						"RefIndividualizedProgramTypeId": {
+							"type": "object"
+						},
+						"ServicePlanDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefIndividualizedProgramLocationId": {
+							"type": "object"
+						},
+						"ServicePlanMeetingParticipants": {
+							"type": "string",
+							"maxLength": 4000
+						},
+						"ServicePlanSignedBy": {
+							"type": "string",
+							"maxLength": 4000
+						},
+						"ServicePlanSignatureDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"ServicePlanReevaluationDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefStudentSupportServiceTypeId": {
+							"type": "object"
+						},
+						"InclusiveSettingIndicator": {
+							"type": "boolean"
+						},
+						"ServicePlanEndDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"TransferOfRightsStatement": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"_ComunidadEducativa": {
+			"type": "object",
+			"properties": {
+				"K12StaffEmployment": {
+					"type": "object",
+					"properties": {
+						"StaffEmploymentId": {
+							"type": "integer"
+						},
+						"RefK12StaffClassificationId": {
+							"type": "object"
+						},
+						"RefEmploymentStatusId": {
+							"type": "object"
+						},
+						"ContractDaysOfServicePerYear": {
+							"type": "number"
+						},
+						"StaffCompensationBaseSalary": {
+							"type": "number"
+						},
+						"StaffCompensationRetirementBenefits": {
+							"type": "number"
+						},
+						"StaffCompensationHealthBenefits": {
+							"type": "number"
+						},
+						"StaffCompensationOtherBenefits": {
+							"type": "number"
+						},
+						"StaffCompensationTotalBenefits": {
+							"type": "number"
+						},
+						"StaffCompensationTotalSalary": {
+							"type": "number"
+						},
+						"MepPersonnelIndicator": {
+							"type": "boolean"
+						},
+						"TitleITargetedAssistanceStaffFunded": {
+							"type": "boolean"
+						},
+						"SalaryForTeachingAssignmentOnlyIndicator": {
+							"type": "boolean"
+						}
+					}
+				},
+				"K12StudentEnrollment": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefEntryGradeLevelId": {
+							"type": "object"
+						},
+						"RefPublicSchoolResidence": {
+							"type": "object"
+						},
+						"RefEnrollmentStatusId": {
+							"type": "object"
+						},
+						"RefEntryType": {
+							"type": "object"
+						},
+						"RefExitGradeLevel": {
+							"type": "object"
+						},
+						"RefExitOrWithdrawalStatusId": {
+							"type": "object"
+						},
+						"RefExitOrWithdrawalTypeId": {
+							"type": "object"
+						},
+						"DisplacedStudentStatus": {
+							"type": "boolean"
+						},
+						"RefEndOfTermStatusId": {
+							"type": "object"
+						},
+						"RefPromotionReasonId": {
+							"type": "object"
+						},
+						"RefNonPromotionReasonId": {
+							"type": "object"
+						},
+						"RefFoodServiceEligibilityId": {
+							"type": "object"
+						},
+						"FirstEntryDateIntoUSSchool": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefDirectoryInformationBlockStatusId": {
+							"type": "object"
+						},
+						"NSLPDirectCertificationIndicator": {
+							"type": "boolean"
+						},
+						"RefStudentEnrollmentAccessTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12StudentAcademicHonor": {
+					"type": "object",
+					"properties": {
+						"K12StudentAcademicHonorId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefAcademicHonorTypeId": {
+							"type": "object"
+						},
+						"HonorDescription": {
+							"type": "string",
+							"maxLength": 30
+						}
+					}
+				},
+				"StaffEmployment": {
+					"type": "object",
+					"properties": {
+						"StaffEmploymentId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"HireDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"PositionTitle": {
+							"type": "string",
+							"maxLength": 45
+						},
+						"RefEmploymentSeparationTypeId": {
+							"type": "object"
+						},
+						"RefEmploymentSeparationReasonId": {
+							"type": "object"
+						},
+						"UnionMembershipName": {
+							"type": "string",
+							"maxLength": 200
+						},
+						"WeeksEmployedPerYear": {
+							"type": "object"
+						}
+					}
+				},
+				"K12StaffAssignment": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefK12StaffClassificationId": {
+							"type": "object"
+						},
+						"RefProfessionalEducationJobClassificationid": {
+							"type": "object"
+						},
+						"RefTeachingAssignmentRoleId": {
+							"type": "object"
+						},
+						"PrimaryAssignment": {
+							"type": "boolean"
+						},
+						"TeacherOfRecord": {
+							"type": "boolean"
+						},
+						"RefClassroomPositionTypeId": {
+							"type": "object"
+						},
+						"FullTimeEquivalency": {
+							"type": "number"
+						},
+						"ContributionPercentage": {
+							"type": "number"
+						},
+						"ItinerantTeacher": {
+							"type": "boolean"
+						},
+						"HighlyQualifiedTeacherIndicator": {
+							"type": "boolean"
+						},
+						"SpecialEducationTeacher": {
+							"type": "boolean"
+						},
+						"RefSpecialEducationStaffCategoryId": {
+							"type": "object"
+						},
+						"SpecialEducationRelatedServicesPersonnel": {
+							"type": "boolean"
+						},
+						"SpecialEducationParaprofessional": {
+							"type": "boolean"
+						},
+						"RefSpecialEducationAgeGroupTaughtId": {
+							"type": "object"
+						},
+						"RefMepStaffCategoryId": {
+							"type": "object"
+						},
+						"RefTitleIProgramStaffCategoryId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12StudentCourseSection": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefCourseRepeatCodeId": {
+							"type": "object"
+						},
+						"RefCourseSectionEnrollmentStatusTypeId": {
+							"type": "object"
+						},
+						"RefCourseSectionEntryTypeId": {
+							"type": "object"
+						},
+						"RefCourseSectionExitTypeId": {
+							"type": "object"
+						},
+						"RefExitOrWithdrawalStatusId": {
+							"type": "object"
+						},
+						"RefGradeLevelWhenCourseTakenId": {
+							"type": "object"
+						},
+						"GradeEarned": {
+							"type": "string",
+							"maxLength": 15
+						},
+						"GradeValueQualifier": {
+							"type": "string",
+							"maxLength": 100
+						},
+						"NumberOfCreditsAttempted": {
+							"type": "number"
+						},
+						"RefCreditTypeEarnedId": {
+							"type": "object"
+						},
+						"RefAdditionalCreditTypeId": {
+							"type": "object"
+						},
+						"RefPreAndPostTestIndicatorId": {
+							"type": "object"
+						},
+						"RefProgressLevelId": {
+							"type": "object"
+						},
+						"RefCourseGpaApplicabilityId": {
+							"type": "object"
+						},
+						"NumberOfCreditsEarned": {
+							"type": "number"
+						},
+						"TuitionFunded": {
+							"type": "boolean"
+						},
+						"ExitWithdrawalDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						}
+					}
+				},
+				"K12StudentAcademicRecord": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"CreditsAttemptedCumulative": {
+							"type": "number"
+						},
+						"CreditsEarnedCumulative": {
+							"type": "number"
+						},
+						"GradePointsEarnedCumulative": {
+							"type": "number"
+						},
+						"GradePointAverageCumulative": {
+							"type": "number"
+						},
+						"RefGpaWeightedIndicatorId": {
+							"type": "object"
+						},
+						"ProjectedGraduationDate": {
+							"type": "string",
+							"maxLength": 7
+						},
+						"HighSchoolStudentClassRank": {
+							"type": "object"
+						},
+						"ClassRankingDate": {
+							"type": "string",
+							"maxLength": 10
+						},
+						"TotalNumberInClass": {
+							"type": "object"
+						},
+						"DiplomaOrCredentialAwardDate": {
+							"type": "string",
+							"maxLength": 7
+						},
+						"RefHighSchoolDiplomaTypeId": {
+							"type": "object"
+						},
+						"RefHighSchoolDiplomaDistinctionTypeId": {
+							"type": "object"
+						},
+						"RefTechnologyLiteracyStatusId": {
+							"type": "object"
+						},
+						"RefPsEnrollmentActionId": {
+							"type": "object"
+						},
+						"RefPreAndPostTestIndicatorId": {
+							"type": "object"
+						},
+						"RefProfessionalTechnicalCredentialTypeId": {
+							"type": "object"
+						},
+						"RefProgressLevelId": {
+							"type": "object"
+						}
+					}
+				},
+				"RoleAttendance": {
+					"type": "object",
+					"properties": {
+						"RoleAttendanceId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"NumberOfDaysInAttendance": {
+							"type": "number"
+						},
+						"NumberOfDaysAbsent": {
+							"type": "number"
+						},
+						"AttendanceRate": {
+							"type": "number"
+						}
+					}
+				},
+				"RoleStatus": {
+					"type": "object",
+					"properties": {
+						"RoleStatusId": {
+							"type": "integer"
+						},
+						"StatusStartDate": {
+							"type": "string"
+						},
+						"StatusEndDate": {
+							"type": "string"
+						},
+						"RefRoleStatusId": {
+							"type": "object"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						}
+					}
+				},
+				"K12StudentSession": {
+					"type": "object",
+					"properties": {
+						"K12StudentSessionId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"OrganizationCalendarSessionId": {
+							"type": "integer"
+						},
+						"GradePointAverageGivenSession": {
+							"type": "number"
+						}
+					}
+				},
+				"ServicesReceived": {
+					"type": "object",
+					"properties": {
+						"ServicesReceivedId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"FullTimeEquivalency": {
+							"type": "number"
+						},
+						"ServicePlanId": {
+							"type": "object"
+						}
+					}
+				},
+				"OrganizationPersonRole": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"OrganizationId": {
+							"type": "integer"
+						},
+						"PersonId": {
+							"type": "integer"
+						},
+						"RoleId": {
+							"type": "integer"
+						},
+						"EntryDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"ExitDate": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						}
+					}
+				},
+				"RoleAttendanceEvent": {
+					"type": "object",
+					"properties": {
+						"RoleAttendanceEventId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"Date": {
+							"type": "string",
+							"pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+						},
+						"RefAttendanceEventTypeId": {
+							"type": "object"
+						},
+						"RefAttendanceStatusId": {
+							"type": "object"
+						},
+						"RefAbsentAttendanceCategoryId": {
+							"type": "object"
+						},
+						"RefPresentAttendanceCategoryId": {
+							"type": "object"
+						},
+						"RefLeaveEventTypeId": {
+							"type": "object"
+						}
+					}
+				},
+				"Role": {
+					"type": "object",
+					"properties": {
+						"RoleId": {
+							"type": "integer"
+						},
+						"Name": {
+							"type": "string",
+							"maxLength": 50
+						},
+						"RefJurisdictionId": {
+							"type": "object"
+						}
+					}
+				},
+				"K12StudentEmployment": {
+					"type": "object",
+					"properties": {
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefEmployedWhileEnrolledId": {
+							"$ref": "#/definitions/RefEmployedWhileEnrolled"
+						},
+						"RefEmployedAfterExitId": {
+							"$ref": "#/definitions/RefEmployedAfterExit"
+						},
+						"EmploymentNaicsCode": {
+							"type": "string",
+							"maxLength": 6
+						}
+					}
+				},
+				"ActivityRecognition": {
+					"type": "object",
+					"properties": {
+						"ActivityRecognitionId": {
+							"type": "integer"
+						},
+						"OrganizationPersonRoleId": {
+							"type": "integer"
+						},
+						"RefActivityRecognitionTypeId": {
+							"$ref": "#/definitions/RefActivityRecognitionType"
+						}
+					}
+				}
+			}
+		},
+		"_Auditoria": {
+			"type": "object",
+			"properties": {
+				"RUT": {
+					"type": "number"
+				},
+				"DateTimeWithTimeZone": {
+					"type": "string",
+					"pattern": "^(19|2[0-9])[0-9]{2}(?:-)(0[1-9]|1[012])(?:-)(0[1-9]|[12][0-9]|3[01])(?:T)(0[0-9]|1[0-9]|2[0-3])(?::)(0[0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9])(?::)(0[0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9])(?:-)(0[0-9][0-9][0-9])?$"
+				},
+				"Token": {
+					"type": "number"
+				},
+				"TableName": {},
+				"FieldName": {},
+				"OperationType": {
+					"type": "string",
+					"enum": [
+						"INSERT",
+						"UPDATE",
+						"DELETE"
+					]
+				},
+				"OldData": {
+					"type": "string"
+				},
+				"NewData": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"definitions": {
+		"RefDisabilityConditionStatusCode": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Permanent",
+						"Temporary"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefIDEADisabilityType": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Autism",
+						"Deafblindness",
+						"Deafness",
+						"Developmentaldelay",
+						"Emotionaldisturbance",
+						"Hearingimpairment",
+						"Intellectualdisability",
+						"Multipledisabilities",
+						"Orthopedicimpairment",
+						"Otherhealthimpairment",
+						"Specificlearningdisability",
+						"Speechlanguageimpairment",
+						"Traumaticbraininjury",
+						"Visualimpairment",
+						"Disfacia",
+						"DeficitAtencional"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Autism",
+						"Deaf-blindness",
+						"Deafness",
+						"Developmental delay",
+						"Emotional disturbance",
+						"Hearing impairment",
+						"Intellectual disability",
+						"Multiple disabilities",
+						"Orthopedic impairment",
+						"Other health impairment",
+						"Specific learning disability",
+						"Speech or language impairment",
+						"Traumatic brain injury",
+						"Visual impairment",
+						"Disfacia",
+						"Deficit Atencional"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefEmployedAfterExit": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Yes",
+						"Unknown"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefEmployedWhileEnrolled": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Yes",
+						"Unknown"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefActivityRecognitionType": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"00737",
+						"00738",
+						"00740",
+						"00741",
+						"00742",
+						"00743",
+						"02048",
+						"00745",
+						"00746",
+						"00747",
+						"00748",
+						"09999"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Athletic awards",
+						"Awarding of units of value",
+						"Citizenship award/recognition",
+						"Completion of requirement, but no units of value awarded",
+						"Certificate",
+						"Honor award",
+						"Letter of commendation",
+						"Medals",
+						"Monogram/letter",
+						"Points",
+						"Promotion or advancement",
+						"Other"
+					]
+				},
+				"Definition": {
+					"type": "string",
+					"enum": [
+						"Athletic award was given to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Awarding of units of value was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Citizenship award/recognition was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Completion of requirement, but no units of value awarded  to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Certificate was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Honor award was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Letter of commendation was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"A medal was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"A monogram/letter was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Points were awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"Promotion or advancement was awarded to the student for accomplishments in a co-curricular, or extra-curricular activity.",
+						"The nature of recognition given to the student for accomplishments in a co-curricular, or extra-curricular activity is in a category not yet defined in CEDS."
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefEducationVerificationMethod": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"OfficialTranscript",
+						"TranscriptCopy",
+						"DegreeCopy",
+						"GradeReport",
+						"Other"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Official transcript",
+						"Transcript copy",
+						"Degree copy",
+						"Grade report",
+						"Other"
+					]
+				},
+				"Definition": {
+					"type": "string",
+					"enum": [
+						"Official transcript is the method by which the formal education is verified.",
+						"Transcript copy is the method by which the formal education is verified.",
+						"Degree copy is the method by which the formal education is verified.",
+						"Grade report is the method by which the formal education is verified.",
+						"The method by which the formal education is verified is in a category not yet defined by CEDS."
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefHigherEducationInstitutionAccreditationStatus": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Regional",
+						"Programmatic",
+						"National",
+						"Faith",
+						"CareerRelated",
+						"NotAccredited"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Regionally accredited",
+						"Programmatic accreditation",
+						"Nationally accredited",
+						"Faith",
+						"Career related",
+						"Not accredited"
+					]
+				},
+				"Definition": {
+					"type": "string",
+					"enum": [
+						"Regionally accredited higher education institution.",
+						"Programmatic accreditation higher education institution.",
+						"Nationally accredited higher education institution.",
+						"Faith-based accreditation organization.",
+						"Career related higher education institution.",
+						"Not accredited higher education institution."
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefPersonRelationship": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Aunt",
+						"Brother",
+						"BrotherInLaw",
+						"CourtAppointedGuardian",
+						"Daughter",
+						"DaughterInLaw",
+						"Employer",
+						"Father",
+						"FathersSignificantOther",
+						"FathersCivilPartner",
+						"FatherInLaw",
+						"Fiance",
+						"Fiancee",
+						"Friend",
+						"Grandfather",
+						"Grandmother",
+						"Husband",
+						"MothersSignificantOther",
+						"Mother",
+						"MothersCivilPartner",
+						"Nephew",
+						"Niece",
+						"Other",
+						"SignificantOther",
+						"Sister",
+						"Son",
+						"Unknown",
+						"Uncle",
+						"Ward",
+						"Wife"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Aunt",
+						"Brother",
+						"Brother-in-law",
+						"Court appointed guardian",
+						"Daughter",
+						"Daughter-in-law",
+						"Employer",
+						"Father",
+						"Father''s significant other",
+						"Father''s civil partner",
+						"Father-in-law",
+						"Fiance",
+						"Fiancee",
+						"Friend",
+						"Grandfather",
+						"Grandmother",
+						"Husband",
+						"Mother''s significant other",
+						"Mother",
+						"Mother''s civil partner",
+						"Nephew",
+						"Niece",
+						"Other",
+						"Significant other",
+						"Sister",
+						"Son",
+						"Unknown",
+						"Uncle",
+						"Ward",
+						"Wife"
+					]
+				},
+				"Definition": {
+					"type": "string",
+					"enum": [
+						"The person is the learner''s Aunt.",
+						"The person is the learner''s Brother.",
+						"The person is the learner''s Brother-in-law.",
+						"The person is the learner''s court appointed guardian.",
+						"The person is the learner''s Daughter.",
+						"The person is the learner''s Aunt.2",
+						"The person is the learner''s Employer.",
+						"The person is the learner''s Father.",
+						"The person is the significant other of the learner''s Father.",
+						"The person is a legal partner of the learner''s father, established by a civil union other than marriage.",
+						"The person is the father of the learner''s spouse.",
+						"The person is  a man who is engaged to be married to the learner.",
+						"The person is  a woman who is engaged to be married to the learner.",
+						"The person is the learner''s Friend.",
+						"The person is the learner''s Grandfather.",
+						"The person is the learner''s Grandmother.",
+						"The person is the learner''s Husband.",
+						"The person is the significant other of the learner''s Mother.",
+						"The person is the learner''s Mother",
+						"The person is a legal partner of the learner''s mother, established by a civil union other than marriage.",
+						"The person is the learner''s Nephew.",
+						"The person is the learner''s Niece.",
+						"The person is related to the learner in a way not represented by other standard options.",
+						"The person is the Significant other of the learner.",
+						"The person is the learner''s Sister.",
+						"The person is the learner''s Son.",
+						"The person is the learner''s Unknown.",
+						"The person is the learner''s Uncle.",
+						"The person is the learner''s Ward.",
+						"The person is the learner''s Wife."
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefTribalAffiliation": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Diaguita",
+						"Yagán",
+						"Alacalufe",
+						"Coya",
+						"Atacameño",
+						"Mapuche",
+						"Quechua",
+						"Pascuense",
+						"Aimara"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Diaguita",
+						"Yámana o Yagán",
+						"Kawashkar o Alacalufe",
+						"Coya",
+						"Atacameño",
+						"Mapuche",
+						"Quechua",
+						"Rapa-Nui o Pascuense",
+						"Aimara"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"Refsex": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"Male",
+						"Female",
+						"NotSelected"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefPersonIdentifierType": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"000785",
+						"001074",
+						"001075",
+						"001571"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Child Identification System",
+						"Staff Member Identification System",
+						"Student Identification System",
+						"Person Identification System"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefPersonIdentificationSystem": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"RUN",
+						"IPE"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Rol Unico Nacional",
+						"Identificador Provisorio Escolar"
+					]
+				},
+				"RefPersonIdentifierTypeId": {
+					"$ref": "#/definitions/RefPersonIdentifierType"
+				}
+			}
+		},
+		"RefPersonalInformationVerification": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"01003",
+						"01004",
+						"01012",
+						"01005",
+						"01006",
+						"01013",
+						"02382",
+						"09999",
+						"03424",
+						"03423",
+						"01007",
+						"01008",
+						"01009",
+						"01010",
+						"01011"
+					]
+				},
+				"Description": {
+					"type": "string",
+					"enum": [
+						"Baptismal or church certificate",
+						"Birth certificate",
+						"Driver''s license",
+						"Entry in family Bible",
+						"Hospital certificate",
+						"Immigration document/visa",
+						"Life insurance policy",
+						"Other",
+						"Other non-official document",
+						"Other official document",
+						"Parent''s affidavit",
+						"Passport",
+						"Physician",
+						"Previously verified school records",
+						"State-issued ID"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefCounty": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"maxLength": 100,
+					"enum": [
+						"Arica",
+						"Camarones",
+						"Putre",
+						"General Lagos",
+						"Iquique",
+						"Camiña",
+						"Colchane",
+						"Huara",
+						"Pica",
+						"Pozo Almonte",
+						"Alto Hospicio",
+						"Antofagasta",
+						"Mejillones",
+						"Sierra Gorda",
+						"Taltal",
+						"Calama",
+						"Ollagüe",
+						"San Pedro de Atacama",
+						"Tocopilla",
+						"María Elena",
+						"Copiapó",
+						"Caldera",
+						"Tierra Amarilla",
+						"Chañaral",
+						"Diego de Almagro",
+						"Vallenar",
+						"Alto del Carmen",
+						"Freirina",
+						"Huasco",
+						"La Serena",
+						"Coquimbo",
+						"Andacollo",
+						"La Higuera",
+						"Paiguano",
+						"Vicuña",
+						"Illapel",
+						"Canela",
+						"Los Vilos",
+						"Salamanca",
+						"Ovalle",
+						"Combarbalá",
+						"Monte Patria",
+						"Punitaqui",
+						"Río Hurtado",
+						"Valparaíso",
+						"Casablanca",
+						"Concón",
+						"Juan Fernández",
+						"Puchuncaví",
+						"Quilpué",
+						"Quintero",
+						"Villa Alemana",
+						"Viña del Mar",
+						"Isla  de Pascua",
+						"Los Andes",
+						"Calle Larga",
+						"Rinconada",
+						"San Esteban",
+						"La Ligua",
+						"Cabildo",
+						"Papudo",
+						"Petorca",
+						"Zapallar",
+						"Quillota",
+						"Calera",
+						"Hijuelas",
+						"La Cruz",
+						"Limache",
+						"Nogales",
+						"Olmué",
+						"San Antonio",
+						"Algarrobo",
+						"Cartagena",
+						"El Quisco",
+						"El Tabo",
+						"Santo Domingo",
+						"San Felipe",
+						"Catemu",
+						"Llaillay",
+						"Panquehue",
+						"Putaendo",
+						"Santa María",
+						"Rancagua",
+						"Codegua",
+						"Coinco",
+						"Coltauco",
+						"Doñihue",
+						"Graneros",
+						"Las Cabras",
+						"Machalí",
+						"Malloa",
+						"Mostazal",
+						"Olivar",
+						"Peumo",
+						"Pichidegua",
+						"Quinta de Tilcoco",
+						"Rengo",
+						"Requínoa",
+						"San Vicente",
+						"Pichilemu",
+						"La Estrella",
+						"Litueche",
+						"Marchihue",
+						"Navidad",
+						"Paredones",
+						"San Fernando",
+						"Chépica",
+						"Chimbarongo",
+						"Lolol",
+						"Nancagua",
+						"Palmilla",
+						"Peralillo",
+						"Placilla",
+						"Pumanque",
+						"Santa Cruz",
+						"Talca",
+						"Constitución",
+						"Curepto",
+						"Empedrado",
+						"Maule",
+						"Pelarco",
+						"Pencahue",
+						"Río Claro",
+						"San Clemente",
+						"San Rafael",
+						"Cauquenes",
+						"Chanco",
+						"Pelluhue",
+						"Curicó",
+						"Hualañé",
+						"Licantén",
+						"Molina",
+						"Rauco",
+						"Romeral",
+						"Sagrada Familia",
+						"Teno",
+						"Vichuquén",
+						"Linares",
+						"Colbún",
+						"Longaví",
+						"Parral",
+						"Retiro",
+						"San Javier",
+						"Villa Alegre",
+						"Yerbas Buenas",
+						"Concepción",
+						"Coronel",
+						"Chiguayante",
+						"Florida",
+						"Hualqui",
+						"Lota",
+						"Penco",
+						"San Pedro de la Paz",
+						"Santa Juana",
+						"Talcahuano",
+						"Tomé",
+						"Hualpén",
+						"Lebu",
+						"Arauco",
+						"Cañete",
+						"Contulmo",
+						"Curanilahue",
+						"Los Álamos",
+						"Tirúa",
+						"Los Ángeles",
+						"Antuco",
+						"Cabrero",
+						"Laja",
+						"Mulchén",
+						"Nacimiento",
+						"Negrete",
+						"Quilaco",
+						"Quilleco",
+						"San Rosendo",
+						"Santa Bárbara",
+						"Tucapel",
+						"Yumbel",
+						"Alto Biobío",
+						"Chillán",
+						"Bulnes",
+						"Cobquecura",
+						"Coelemu",
+						"Coihueco",
+						"Chillán Viejo",
+						"El Carmen",
+						"Ninhue",
+						"Ñiquén",
+						"Pemuco",
+						"Pinto",
+						"Portezuelo",
+						"Quillón",
+						"Quirihue",
+						"Ránquil",
+						"San Carlos",
+						"San Fabián",
+						"San Ignacio",
+						"San Nicolás",
+						"Treguaco",
+						"Yungay",
+						"Temuco",
+						"Carahue",
+						"Cunco",
+						"Curarrehue",
+						"Freire",
+						"Galvarino",
+						"Gorbea",
+						"Lautaro",
+						"Loncoche",
+						"Melipeuco",
+						"Nueva Imperial",
+						"Padre Las Casas",
+						"Perquenco",
+						"Pitrufquén",
+						"Pucón",
+						"Saavedra",
+						"Teodoro Schmidt",
+						"Toltén",
+						"Vilcún",
+						"Villarrica",
+						"Cholchol",
+						"Angol",
+						"Collipulli",
+						"Curacautín",
+						"Ercilla",
+						"Lonquimay",
+						"Los Sauces",
+						"Lumaco",
+						"Purén",
+						"Renaico",
+						"Traiguén",
+						"Victoria",
+						"Valdivia",
+						"Corral",
+						"Futrono",
+						"La Unión",
+						"Lago Ranco",
+						"Lanco",
+						"Los Lagos",
+						"Máfil",
+						"Mariquina",
+						"Paillaco",
+						"Panguipulli",
+						"Río Bueno",
+						"Puerto Montt",
+						"Calbuco",
+						"Cochamó",
+						"Fresia",
+						"Frutillar",
+						"Los Muermos",
+						"Llanquihue",
+						"Maullín",
+						"Puerto Varas",
+						"Castro",
+						"Ancud",
+						"Chonchi",
+						"Curaco de Vélez",
+						"Dalcahue",
+						"Puqueldón",
+						"Queilén",
+						"Quellón",
+						"Quemchi",
+						"Quinchao",
+						"Osorno",
+						"Puerto Octay",
+						"Purranque",
+						"Puyehue",
+						"Río Negro",
+						"San Juan de la Costa",
+						"San Pablo",
+						"Chaitén",
+						"Futaleufú",
+						"Hualaihué",
+						"Palena",
+						"Coihaique",
+						"Lago Verde",
+						"Aisén",
+						"Cisnes",
+						"Guaitecas",
+						"Cochrane",
+						"O'Higgins",
+						"Tortel",
+						"Chile Chico",
+						"Río Ibáñez",
+						"Punta Arenas",
+						"Laguna Blanca",
+						"Río Verde",
+						"San Gregorio",
+						"Cabo de Hornos",
+						"Antártica",
+						"Porvenir",
+						"Primavera",
+						"Timaukel",
+						"Natales",
+						"Torres del Paine",
+						"Santiago",
+						"Cerrillos",
+						"Cerro Navia",
+						"Conchalí",
+						"El Bosque",
+						"Estación Central",
+						"Huechuraba",
+						"Independencia",
+						"La Cisterna",
+						"La Florida",
+						"La Granja",
+						"La Pintana",
+						"La Reina",
+						"Las Condes",
+						"Lo Barnechea",
+						"Lo Espejo",
+						"Lo Prado",
+						"Macul",
+						"Maipú",
+						"Ñuñoa",
+						"Pedro Aguirre Cerda",
+						"Peñalolén",
+						"Providencia",
+						"Pudahuel",
+						"Quilicura",
+						"Quinta Normal",
+						"Recoleta",
+						"Renca",
+						"San Joaquín",
+						"San Miguel",
+						"San Ramón",
+						"Vitacura",
+						"Puente Alto",
+						"Pirque",
+						"San José de Maipo",
+						"Colina",
+						"Lampa",
+						"Tiltil",
+						"San Bernardo",
+						"Buin",
+						"Calera de Tango",
+						"Paine",
+						"Melipilla",
+						"Alhué",
+						"Curacaví",
+						"María Pinto",
+						"San Pedro",
+						"Talagante",
+						"El Monte",
+						"Isla de Maipo",
+						"Padre Hurtado",
+						"Peñaflor",
+						"Ignorada"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefState": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"R01",
+						"R02",
+						"R03",
+						"R04",
+						"R05",
+						"R06",
+						"R07",
+						"R08",
+						"R09",
+						"R10",
+						"R11",
+						"R12",
+						"R13",
+						"R14",
+						"R15",
+						"R16"
+					]
+				},
+				"StateName": {
+					"type": "string",
+					"enum": [
+						"Tarapacá",
+						"Antofagasta",
+						"Atacama",
+						"Coquimbo",
+						"Valparaíso",
+						"Libertador B. O'Higgins",
+						"Maule",
+						"Bíobío",
+						"La Araucanía",
+						"Los Lagos",
+						"Aisén del Gral. C. Ibáñez del Campo",
+						"Magallanes y de La Antártica Chilena",
+						"Metropolitana de Santiago",
+						"Los Ríos",
+						"Arica y Parinacota",
+						"Ñuble"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		},
+		"RefCountry": {
+			"type": "object",
+			"properties": {
+				"Code": {
+					"type": "string",
+					"enum": [
+						"AF",
+						"AX",
+						"AL",
+						"DZ",
+						"AS",
+						"AD",
+						"AO",
+						"AI",
+						"AQ",
+						"AG",
+						"AR",
+						"AM",
+						"AW",
+						"AU",
+						"AT",
+						"AZ",
+						"BS",
+						"BH",
+						"BD",
+						"BB",
+						"BY",
+						"BE",
+						"BZ",
+						"BJ",
+						"BM",
+						"BT",
+						"BO",
+						"BQ",
+						"BA",
+						"BW",
+						"BV",
+						"BR",
+						"IO",
+						"BN",
+						"BG",
+						"BF",
+						"BI",
+						"KH",
+						"CM",
+						"CA",
+						"CV",
+						"KY",
+						"CF",
+						"TD",
+						"CL",
+						"CN",
+						"CX",
+						"CC",
+						"CO",
+						"KM",
+						"CG",
+						"CD",
+						"CK",
+						"CR",
+						"CI",
+						"HR",
+						"CU",
+						"CW",
+						"CY",
+						"CZ",
+						"DK",
+						"DJ",
+						"DM",
+						"DO",
+						"EC",
+						"EG",
+						"SV",
+						"GQ",
+						"ER",
+						"EE",
+						"ET",
+						"FK",
+						"FO",
+						"FJ",
+						"FI",
+						"FR",
+						"GF",
+						"PF",
+						"TF",
+						"GA",
+						"GM",
+						"GE",
+						"DE",
+						"GH",
+						"GI",
+						"GR",
+						"GL",
+						"GD",
+						"GP",
+						"GU",
+						"GT",
+						"GG",
+						"GN",
+						"GW",
+						"GY",
+						"HT",
+						"HM",
+						"VA",
+						"HN",
+						"HK",
+						"HU",
+						"IS",
+						"IN",
+						"ID",
+						"IR",
+						"IQ",
+						"IE",
+						"IM",
+						"IL",
+						"IT",
+						"JM",
+						"JP",
+						"JE",
+						"JO",
+						"KZ",
+						"KE",
+						"KI",
+						"KP",
+						"KR",
+						"KW",
+						"KG",
+						"LA",
+						"LV",
+						"LB",
+						"LS",
+						"LR",
+						"LY",
+						"LI",
+						"LT",
+						"LU",
+						"MO",
+						"MK",
+						"MG",
+						"MW",
+						"MY",
+						"MV",
+						"ML",
+						"MT",
+						"MH",
+						"MQ",
+						"MR",
+						"MU",
+						"YT",
+						"MX",
+						"FM",
+						"MD",
+						"MC",
+						"MN",
+						"ME",
+						"MS",
+						"MA",
+						"MZ",
+						"MM",
+						"NA",
+						"NR",
+						"NP",
+						"NL",
+						"NC",
+						"NZ",
+						"NI",
+						"NE",
+						"NG",
+						"NU",
+						"NF",
+						"MP",
+						"NO",
+						"OM",
+						"PK",
+						"PW",
+						"PS",
+						"PA",
+						"PG",
+						"PY",
+						"PE",
+						"PH",
+						"PN",
+						"PL",
+						"PT",
+						"PR",
+						"QA",
+						"RE",
+						"RO",
+						"RU",
+						"RW",
+						"BL",
+						"SH",
+						"KN",
+						"LC",
+						"MF",
+						"PM",
+						"VC",
+						"WS",
+						"SM",
+						"ST",
+						"SA",
+						"SN",
+						"RS",
+						"SC",
+						"SL",
+						"SG",
+						"SX",
+						"SK",
+						"SI",
+						"SB",
+						"SO",
+						"ZA",
+						"GS",
+						"SS",
+						"ES",
+						"LK",
+						"SD",
+						"SR",
+						"SJ",
+						"SZ",
+						"SE",
+						"CH",
+						"SY",
+						"TW",
+						"TJ",
+						"TZ",
+						"TH",
+						"TL",
+						"TG",
+						"TK",
+						"TO",
+						"TT",
+						"TN",
+						"TR",
+						"TM",
+						"TC",
+						"TV",
+						"UG",
+						"UA",
+						"AE",
+						"GB",
+						"US",
+						"UM",
+						"UY",
+						"UZ",
+						"VU",
+						"VE",
+						"VN",
+						"VG",
+						"VI",
+						"WF",
+						"EH",
+						"YE",
+						"ZM",
+						"ZW"
+					]
+				},
+				"Name": {
+					"type": "string",
+					"enum": [
+						"Afghanistan",
+						"Åland Islands",
+						"Albania",
+						"Algeria",
+						"American Samoa",
+						"Andorra",
+						"Angola",
+						"Anguilla",
+						"Antarctica",
+						"Antigua and Barbuda",
+						"Argentina",
+						"Armenia",
+						"Aruba",
+						"Australia",
+						"Austria",
+						"Azerbaijan",
+						"Bahamas",
+						"Bahrain",
+						"Bangladesh",
+						"Barbados",
+						"Belarus",
+						"Belgium",
+						"Belize",
+						"Benin",
+						"Bermuda",
+						"Bhutan",
+						"Bolivia, Plurinational State of",
+						"Bonaire, Sint Eustatius and Saba",
+						"Bosnia and Herzegovina",
+						"Botswana",
+						"Bouvet Island",
+						"Brazil",
+						"British Indian Ocean Territory",
+						"Brunei Darussalam",
+						"Bulgaria",
+						"Burkina Faso",
+						"Burundi",
+						"Cambodia",
+						"Cameroon",
+						"Canada",
+						"Cape Verde",
+						"Cayman Islands",
+						"Central African Republic",
+						"Chad",
+						"Chile",
+						"China",
+						"Christmas Island",
+						"Cocos (Keeling) Islands",
+						"Colombia",
+						"Comoros",
+						"Congo",
+						"Congo, the Democratic Republic of the",
+						"Cook Islands",
+						"Costa Rica",
+						"Côte d'Ivoire",
+						"Croatia",
+						"Cuba",
+						"Curaçao",
+						"Cyprus",
+						"Czech Republic",
+						"Denmark",
+						"Djibouti",
+						"Dominica",
+						"Dominican Republic",
+						"Ecuador",
+						"Egypt",
+						"El Salvador",
+						"Equatorial Guinea",
+						"Eritrea",
+						"Estonia",
+						"Ethiopia",
+						"Falkland Islands (Malvinas)",
+						"Faroe Islands",
+						"Fiji",
+						"Finland",
+						"France",
+						"French Guiana",
+						"French Polynesia",
+						"French Southern Territories",
+						"Gabon",
+						"Gambia",
+						"Georgia",
+						"Germany",
+						"Ghana",
+						"Gibraltar",
+						"Greece",
+						"Greenland",
+						"Grenada",
+						"Guadeloupe",
+						"Guam",
+						"Guatemala",
+						"Guernsey",
+						"Guinea",
+						"Guinea-Bissau",
+						"Guyana",
+						"Haiti",
+						"Heard Island and McDonald Islands",
+						"Holy See (Vatican City State)",
+						"Honduras",
+						"Hong Kong",
+						"Hungary",
+						"Iceland",
+						"India",
+						"Indonesia",
+						"Iran, Islamic Republic of",
+						"Iraq",
+						"Ireland",
+						"Isle of Man",
+						"Israel",
+						"Italy",
+						"Jamaica",
+						"Japan",
+						"Jersey",
+						"Jordan",
+						"Kazakhstan",
+						"Kenya",
+						"Kiribati",
+						"Korea, Democratic People's Republic of",
+						"Korea, Republic of",
+						"Kuwait",
+						"Kyrgyzstan",
+						"Lao People's Democratic Republic",
+						"Latvia",
+						"Lebanon",
+						"Lesotho",
+						"Liberia",
+						"Libya",
+						"Liechtenstein",
+						"Lithuania",
+						"Luxembourg",
+						"Macao",
+						"Macedonia, the Former Yugoslav Republic of",
+						"Madagascar",
+						"Malawi",
+						"Malaysia",
+						"Maldives",
+						"Mali",
+						"Malta",
+						"Marshall Islands",
+						"Martinique",
+						"Mauritania",
+						"Mauritius",
+						"Mayotte",
+						"Mexico",
+						"Micronesia, Federated States of",
+						"Moldova, Republic of",
+						"Monaco",
+						"Mongolia",
+						"Montenegro",
+						"Montserrat",
+						"Morocco",
+						"Mozambique",
+						"Myanmar",
+						"Namibia",
+						"Nauru",
+						"Nepal",
+						"Netherlands",
+						"New Caledonia",
+						"New Zealand",
+						"Nicaragua",
+						"Niger",
+						"Nigeria",
+						"Niue",
+						"Norfolk Island",
+						"Northern Mariana Islands",
+						"Norway",
+						"Oman",
+						"Pakistan",
+						"Palau",
+						"Palestine, State of",
+						"Panama",
+						"Papua New Guinea",
+						"Paraguay",
+						"Peru",
+						"Philippines",
+						"Pitcairn",
+						"Poland",
+						"Portugal",
+						"Puerto Rico",
+						"Qatar",
+						"Réunion",
+						"Romania",
+						"Russian Federation",
+						"Rwanda",
+						"Saint Barthélemy",
+						"Saint Helena, Ascension and Tristan da Cunha",
+						"Saint Kitts and Nevis",
+						"Saint Lucia",
+						"Saint Martin (French part)",
+						"Saint Pierre and Miquelon",
+						"Saint Vincent and the Grenadines",
+						"Samoa",
+						"San Marino",
+						"Sao Tome and Principe",
+						"Saudi Arabia",
+						"Senegal",
+						"Serbia",
+						"Seychelles",
+						"Sierra Leone",
+						"Singapore",
+						"Sint Maarten (Dutch part)",
+						"Slovakia",
+						"Slovenia",
+						"Solomon Islands",
+						"Somalia",
+						"South Africa",
+						"South Georgia and the South Sandwich Islands",
+						"South Sudan",
+						"Spain",
+						"Sri Lanka",
+						"Sudan",
+						"Suriname",
+						"Svalbard and Jan Mayen",
+						"Swaziland",
+						"Sweden",
+						"Switzerland",
+						"Syrian Arab Republic",
+						"Taiwan, Province of China",
+						"Tajikistan",
+						"Tanzania, United Republic of",
+						"Thailand",
+						"Timor-Leste",
+						"Togo",
+						"Tokelau",
+						"Tonga",
+						"Trinidad and Tobago",
+						"Tunisia",
+						"Turkey",
+						"Turkmenistan",
+						"Turks and Caicos Islands",
+						"Tuvalu",
+						"Uganda",
+						"Ukraine",
+						"United Arab Emirates",
+						"United Kingdom",
+						"United States",
+						"United States Minor Outlying Islands",
+						"Uruguay",
+						"Uzbekistan",
+						"Vanuatu",
+						"Venezuela, Bolivarian Republic of",
+						"Viet Nam",
+						"Virgin Islands, British",
+						"Virgin Islands, U.S.",
+						"Wallis and Futuna",
+						"Western Sahara",
+						"Yemen",
+						"Zambia",
+						"Zimbabwe"
+					]
+				}
+			},
+			"required": [
+				"Code"
+			]
+		}
+	}
+}
